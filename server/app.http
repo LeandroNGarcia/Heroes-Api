@@ -1,0 +1,46 @@
+GET http://localhost:3001/hero/1
+###
+POST http://localhost:3001/hero
+Content-Type: application/json
+
+{
+    "name": "Aquaman",
+    "power": "Water Control"
+}
+###
+PATCH http://localhost:3001/hero
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "Superman"
+}
+###
+PATCH http://localhost:3001/hero/add-power
+Content-Type: application/json
+
+{
+    "heroId": 1,
+    "powerId": 2
+}
+###
+PATCH http://localhost:3001/hero/remove-power
+Content-Type: application/json
+
+{
+    "heroId": 1,
+    "powerId": 2
+}
+###
+GET http://localhost:3001/power/3
+###
+POST  http://localhost:3001/power
+Content-Type: application/json
+
+{
+    "name": "Water Control"
+}
+###
+GET http://localhost:3001/user/1
+###
+PATCH http://localhost:3001/user/add_fav/1?heroId=2

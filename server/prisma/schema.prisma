@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Hero {
+  id Int @id @default(autoincrement())
+  name String @unique
+  power Power[]
+  villain Villain?
+  users User[]
+  googleusers UserGoogle[]
+}
+
+model Power {
+  id Int @id @default(autoincrement())
+  name String @unique
+  hero Hero[]
+  villain Villain?
+}
+
+model Villain {
+  id Int @id @default(autoincrement())
+  name String @unique
+  debility Power @relation(fields: [debilityId], references: [id])
+  debilityId Int @unique
+  enemy Hero @relation(fields: [enemyId], references: [id])
+  enemyId Int @unique
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  lastname String
+  password String
+  photo String?
+  email String @unique
+  verified Boolean @default(false)
+  active Boolean @default(true)
+  favoritesHeroes Hero[]
+}
+
+model UserGoogle {
+  id Int @id @default(autoincrement())
+  name String
+  lastname String
+  password String
+  photo String
+  email String @unique
+  googleId String?
+  active Boolean @default(true)
+  favoritesHeroes Hero[]
+}
