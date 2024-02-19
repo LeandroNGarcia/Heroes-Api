@@ -1,3 +1,8 @@
 node_modules
 # Keep environment variables out of version control
+<<<<<<< HEAD
 .env
+=======
+.env
+src/auth.js
+>>>>>>> dd54f2e7daaa08b7c00235da8d88430cb30d7bdf
