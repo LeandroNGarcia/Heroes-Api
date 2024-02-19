@@ -1,5 +1,5 @@
 import { prisma } from "../db.js"
-
+//Si haces de esta misma forma la clase del controlador no vas a necesitar de iniciar una nueva instancia para utilizarlo en las rutas, simplemente importarlo y usar sus métodos.
 export class HeroModel {
     static async getAll () {
         try {

@@ -1,6 +1,8 @@
 import passport from "passport";
 import { prisma } from "./db.js";
 import GoogleStrategy from "passport-google-oauth2";
+import dotenv from "dotenv"
+dotenv.config()
 
 passport.serializeUser(function (user, done) {
   done(null, user.googleId);
@@ -25,9 +27,8 @@ passport.deserializeUser(async function (id, done) {
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "59030248795-k9vjmmf95onr05p7idgl1lk775qijtst.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientID:process.env.CLIENT_AUTH,
+      clientSecret: process.env.SECRET_AUTH,
       callbackURL: "http://localhost:3001/auth/google/callback",
       passReqToCallback   : true
     },
